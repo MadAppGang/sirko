@@ -1,0 +1,15 @@
+{
+  "_session_count": 36,
+  "rules": {
+    "grep-instead-of-claudemem": {
+      "last_shown_session": 33,
+      "shown_count": 3,
+      "suppress_until_count": 43
+    },
+    "excessive-reads-before-delegation": {
+      "last_shown_session": 32,
+      "shown_count": 4,
+      "suppress_until_count": 37
+    }
+  }
+}

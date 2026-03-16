@@ -5,3 +5,4 @@ dist/
 .sirko/
 coverage/
 *.js.map
+.claudemem/
