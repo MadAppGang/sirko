@@ -1,0 +1,29 @@
+{
+  "name": "@sirko/voice-server",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "start": "bun run src/index.ts",
+    "dev": "bun --watch run src/index.ts",
+    "lint": "echo 'no linter configured'",
+    "format": "echo 'no formatter configured'"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^3.0.41",
+    "@deepgram/sdk": "^5.0.0",
+    "@sirko/shared": "workspace:*",
+    "@sirko/state-store": "workspace:*",
+    "@sirko/tmux-client": "workspace:*",
+    "ai": "^6.0.116",
+    "elevenlabs": "^1.59.0",
+    "twilio": "^5.13.0"
+  },
+  "devDependencies": {
+    "typescript": "*",
+    "@types/bun": "*"
+  }
+}

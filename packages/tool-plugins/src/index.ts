@@ -1,0 +1,7 @@
+export type { SkillDefinition } from './types.js'
+export { getSkill, getAllSkills } from './registry.js'
+export { detectTool } from './detect.js'
+export { claudeCodeSkill } from './plugins/claude-code.js'
+export { codexSkill } from './plugins/codex.js'
+export { aiderSkill } from './plugins/aider.js'
+export { unknownSkill } from './plugins/unknown.js'

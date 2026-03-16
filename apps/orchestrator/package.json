@@ -1,0 +1,28 @@
+{
+  "name": "@sirko/orchestrator",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "start": "bun run src/index.ts",
+    "dev": "bun --watch run src/index.ts",
+    "lint": "echo 'no linter configured'",
+    "format": "echo 'no formatter configured'"
+  },
+  "dependencies": {
+    "@sirko/shared": "workspace:*",
+    "@sirko/tmux-client": "workspace:*",
+    "@sirko/pipeline": "workspace:*",
+    "@sirko/event-bus": "workspace:*",
+    "@sirko/detector": "workspace:*",
+    "@sirko/tool-plugins": "workspace:*",
+    "@sirko/state-store": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "*",
+    "@types/bun": "*"
+  }
+}

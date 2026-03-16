@@ -1,0 +1,14 @@
+{
+  "session": "dev-arch-20260316-124106-081b4c45",
+  "project": "sirko",
+  "type": "greenfield",
+  "detected_stack": {
+    "runtime": "Bun (planned)",
+    "language": "TypeScript (planned)",
+    "frameworks": ["grammY (Telegram)", "LiveKit/Twilio (voice)"],
+    "infrastructure": ["tmux"],
+    "platform": "macOS (dev), Linux (prod)"
+  },
+  "existing_code": false,
+  "notes": "Empty repo — architecture is being designed from scratch based on product spec"
+}

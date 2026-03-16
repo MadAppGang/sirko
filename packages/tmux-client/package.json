@@ -1,0 +1,27 @@
+{
+  "name": "@sirko/tmux-client",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "lint": "echo 'no linter configured'",
+    "format": "echo 'no formatter configured'"
+  },
+  "dependencies": {
+    "@sirko/shared": "workspace:*"
+  },
+  "optionalDependencies": {
+    "@xterm/headless": "^5.0.0"
+  },
+  "devDependencies": {
+    "typescript": "*",
+    "@types/bun": "*"
+  }
+}

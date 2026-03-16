@@ -1,0 +1,24 @@
+{
+  "name": "@sirko/event-bus",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "lint": "echo 'no linter configured'",
+    "format": "echo 'no formatter configured'"
+  },
+  "dependencies": {
+    "@sirko/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "*",
+    "@types/bun": "*"
+  }
+}

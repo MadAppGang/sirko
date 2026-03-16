@@ -1,0 +1,30 @@
+{
+  "name": "sirko",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "tests/integration"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint",
+    "format": "turbo run format",
+    "dev": "bun run --filter orchestrator dev",
+    "start": "bun run --filter orchestrator start"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0",
+    "typescript": "^5.4.0",
+    "@types/bun": "latest"
+  },
+  "dependencies": {
+    "@grammyjs/auto-retry": "^2.0.2",
+    "@grammyjs/parse-mode": "^2.3.0",
+    "@grammyjs/transformer-throttler": "^1.2.1",
+    "grammy": "^1.41.1",
+    "telegram-bot": "^0.4.2"
+  }
+}

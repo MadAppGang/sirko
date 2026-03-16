@@ -1,0 +1,19 @@
+{
+  "outerLoop": {
+    "maxIterations": "infinite",
+    "currentIteration": 0,
+    "notifyEvery": 5
+  },
+  "innerLoops": {
+    "planRevision": 2,
+    "codeReview": 3,
+    "unitTestTDD": 5
+  },
+  "validationType": ["cli_integration", "api_endpoint", "telegram_bot"],
+  "toolsValidated": false,
+  "selectedModels": {
+    "configured": true,
+    "models": ["minimax-m2.5", "kimi-k2.5", "gpt-5.4", "qwen3.5-plus-02-15"],
+    "includeInternal": true
+  }
+}

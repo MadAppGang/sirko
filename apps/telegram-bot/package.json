@@ -1,0 +1,32 @@
+{
+  "name": "@sirko/telegram-bot",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "start": "bun run src/index.ts",
+    "dev": "bun --watch run src/index.ts",
+    "lint": "echo 'no linter configured'",
+    "format": "echo 'no formatter configured'"
+  },
+  "dependencies": {
+    "@sirko/shared": "workspace:*",
+    "@sirko/state-store": "workspace:*",
+    "@sirko/tmux-client": "workspace:*",
+    "grammy": "^1.27.0",
+    "@grammyjs/auto-retry": "^2.0.0",
+    "@grammyjs/transformer-throttler": "^1.2.0",
+    "@grammyjs/parse-mode": "^1.10.0"
+  },
+  "devDependencies": {
+    "typescript": "*",
+    "@types/bun": "*"
+  }
+}

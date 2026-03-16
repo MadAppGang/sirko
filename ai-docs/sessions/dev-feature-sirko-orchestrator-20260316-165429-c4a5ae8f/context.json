@@ -1,0 +1,1146 @@
+{
+  "detected_stack": "bunjs-typescript + react-typescript",
+  "mode": "fullstack",
+  "stacks": [
+    "bunjs-typescript",
+    "react-typescript"
+  ],
+  "greenfield": true,
+  "planned_technologies": {
+    "runtime": "Bun",
+    "language": "TypeScript (strict)",
+    "monorepo": "Turborepo + Bun workspaces",
+    "telegram_bot": "grammY",
+    "llm": "Vercel AI SDK (LLM-agnostic)",
+    "terminal_emulation": "@xterm/headless",
+    "stt": "Deepgram SDK",
+    "tts": "ElevenLabs SDK",
+    "voice_mvp": "Twilio SDK",
+    "voice_production": "LiveKit SDK",
+    "frontend": "React + TanStack Query/Router (optional)",
+    "database": "Neon (optional)"
+  },
+  "discovered_skills": [
+    {
+      "name": "architect-detective",
+      "description": "Use when analyzing architecture and system design. Find design patterns, map layers, identify core abstractions via PageRank. Uses claudemem AST structural analysis for efficient architecture investigation.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/code-analysis/skills/architect-detective/SKILL.md",
+      "source": "plugin:code-analysis@magus",
+      "categories": [
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "claudemem-orchestration",
+      "description": "Use when orchestrating multi-agent code analysis with claudemem. Run claudemem once, share output across parallel agents. Enables parallel investigation, consensus analysis, and role-based command mapping.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/code-analysis/skills/claudemem-orchestration/SKILL.md",
+      "source": "plugin:code-analysis@magus",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "claudemem-search",
+      "description": "\u26a1 PRIMARY TOOL for semantic code search AND structural analysis. NEW: AST tree navigation with map, symbol, callers, callees, context commands. PageRank ranking. Recommended workflow: Map structure first, then search semantically, analyze callers before modifying.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/code-analysis/skills/claudemem-search/SKILL.md",
+      "source": "plugin:code-analysis@magus",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "claudish-usage",
+      "description": "CRITICAL - Guide for using Claudish CLI ONLY through sub-agents to run Claude Code with OpenRouter models (Grok, GPT-5, Gemini, MiniMax). NEVER run Claudish directly in main context unless user explicitly requests it. Use when user mentions external AI models, Claudish, OpenRouter, or alternative models. Includes mandatory sub-agent delegation patterns, agent selection guide, file-based instructions, and strict rules to prevent context window pollution.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/code-analysis/skills/claudish-usage/SKILL.md",
+      "source": "plugin:code-analysis@magus",
+      "categories": [
+        "frontend",
+        "backend",
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "code-search-selector",
+      "description": "\ud83d\udca1 Tool selector for code search tasks. Helps choose between semantic search (claudemem) and native tools (Grep/Glob) based on query type. Semantic search recommended for: 'how does X work', 'find all', 'audit', 'investigate', 'architecture'.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/code-analysis/skills/code-search-selector/SKILL.md",
+      "source": "plugin:code-analysis@magus",
+      "categories": [
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "cross-plugin-detective",
+      "description": "Use when integrating detective skills across plugins. Maps agent roles to appropriate detective skills (developer \u2192 developer-detective, architect \u2192 architect-detective). Reference this to connect agents with claudemem investigation capabilities.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/code-analysis/skills/cross-plugin-detective/SKILL.md",
+      "source": "plugin:code-analysis@magus",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "debugger-detective",
+      "description": "\u26a1 Debugging skill. Best for: 'why is X broken', 'find bug source', 'root cause analysis', 'trace error', 'debug issue'. Uses claudemem AST with context command for efficient call chain analysis.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/code-analysis/skills/debugger-detective/SKILL.md",
+      "source": "plugin:code-analysis@magus",
+      "categories": [
+        "debugging",
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "deep-analysis",
+      "description": "\u26a1 PRIMARY SKILL for: 'how does X work', 'investigate', 'analyze architecture', 'trace flow', 'find implementations'. PREREQUISITE: code-search-selector must validate tool choice. Launches codebase-detective with claudemem INDEXED MEMORY.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/code-analysis/skills/deep-analysis/SKILL.md",
+      "source": "plugin:code-analysis@magus",
+      "categories": [
+        "debugging",
+        "frontend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "developer-detective",
+      "description": "\u26a1 Implementation analysis skill. Best for: 'how does X work', 'find implementation of', 'trace data flow', 'where is X defined', 'find all usages'. Uses claudemem AST with callers/callees for efficient code tracing.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/code-analysis/skills/developer-detective/SKILL.md",
+      "source": "plugin:code-analysis@magus",
+      "categories": [
+        "debugging",
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "investigate",
+      "description": "Unified entry point for code investigation. Auto-routes to specialized detective based on query keywords. Use when investigation type is unclear or for general exploration.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/code-analysis/skills/investigate/SKILL.md",
+      "source": "plugin:code-analysis@magus",
+      "categories": [
+        "testing",
+        "backend",
+        "database",
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "search-interceptor",
+      "description": "\ud83d\udca1 Bulk file read optimizer. Suggests semantic search alternatives when reading multiple files. Helps reduce token usage by using claudemem's ranked results instead of sequential file reads.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/code-analysis/skills/search-interceptor/SKILL.md",
+      "source": "plugin:code-analysis@magus",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "tester-detective",
+      "description": "\u26a1 Test analysis skill. Best for: 'what's tested', 'find test coverage', 'audit test quality', 'missing tests', 'edge cases'. Uses claudemem AST with callers analysis for efficient test discovery.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/code-analysis/skills/tester-detective/SKILL.md",
+      "source": "plugin:code-analysis@magus",
+      "categories": [
+        "testing",
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "ultrathink-detective",
+      "description": "\u26a1 Comprehensive analysis skill. Best for: 'comprehensive audit', 'deep analysis', 'full codebase review', 'multi-perspective investigation', 'complex questions'. Combines all perspectives (architect+developer+tester+debugger). Uses Opus model with full claudemem AST analysis.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/code-analysis/skills/ultrathink-detective/SKILL.md",
+      "source": "plugin:code-analysis@magus",
+      "categories": [
+        "testing",
+        "debugging"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "agent-enforcement",
+      "description": "|",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/multimodel/skills/agent-enforcement/SKILL.md",
+      "source": "plugin:multimodel@magus",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "batching-patterns",
+      "description": "Batch all related operations into single messages for maximum parallelism and performance. Use when launching multiple agents, reading multiple files, running parallel searches, optimizing workflow speed, or avoiding sequential execution bottlenecks. Trigger keywords - \"batching\", \"parallel\", \"single message\", \"golden rule\", \"concurrent\", \"performance\", \"sequential bottleneck\", \"speed optimization\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/multimodel/skills/batching-patterns/SKILL.md",
+      "source": "plugin:multimodel@magus",
+      "categories": [
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "error-recovery",
+      "description": "Handle errors, timeouts, and failures in multi-agent workflows. Use when dealing with external model timeouts, API failures, partial success, user cancellation, or graceful degradation. Trigger keywords - \"error\", \"failure\", \"timeout\", \"retry\", \"fallback\", \"cancelled\", \"graceful degradation\", \"recovery\", \"partial success\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/multimodel/skills/error-recovery/SKILL.md",
+      "source": "plugin:multimodel@magus",
+      "categories": [
+        "debugging",
+        "backend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "hierarchical-coordinator",
+      "description": "Prevent goal drift in long-running multi-agent workflows using a coordinator agent that validates outputs against original objectives at checkpoints. Use when orchestrating 3+ agents, multi-phase features, complex implementations, or any workflow where agents may lose sight of original requirements. Trigger keywords - \"hierarchical\", \"coordinator\", \"anti-drift\", \"checkpoint\", \"validation\", \"goal-alignment\", \"decomposition\", \"phase-gate\", \"shared-state\", \"drift detection\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/multimodel/skills/hierarchical-coordinator/SKILL.md",
+      "source": "plugin:multimodel@magus",
+      "categories": [
+        "frontend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "hooks-system",
+      "description": "Comprehensive lifecycle hook patterns for Claude Code workflows. Use when configuring PreToolUse, PostToolUse, UserPromptSubmit, Stop, or SubagentStop hooks. Covers hook matchers, command hooks, prompt hooks, validation, metrics, auto-formatting, and security patterns. Trigger keywords - \"hooks\", \"PreToolUse\", \"PostToolUse\", \"lifecycle\", \"tool matcher\", \"hook template\", \"auto-format\", \"security hook\", \"validation hook\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/multimodel/skills/hooks-system/SKILL.md",
+      "source": "plugin:multimodel@magus",
+      "categories": [
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "model-tracking-protocol",
+      "description": "MANDATORY tracking protocol for multi-model validation. Creates structured tracking tables BEFORE launching models, tracks progress during execution, and ensures complete results presentation. Use when running 2+ external AI models in parallel. Trigger keywords - \"multi-model\", \"parallel review\", \"external models\", \"consensus\", \"model tracking\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/multimodel/skills/model-tracking-protocol/SKILL.md",
+      "source": "plugin:multimodel@magus",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "multi-agent-coordination",
+      "description": "Coordinate multiple agents in parallel or sequential workflows. Use when running agents simultaneously, delegating to sub-agents, switching between specialized agents, or managing agent selection. Trigger keywords - \"parallel agents\", \"sequential workflow\", \"delegate\", \"multi-agent\", \"sub-agent\", \"agent switching\", \"task decomposition\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/multimodel/skills/multi-agent-coordination/SKILL.md",
+      "source": "plugin:multimodel@magus",
+      "categories": [
+        "testing",
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "multi-model-validation",
+      "description": "Run multiple AI models in parallel for 3-5x speedup with ENFORCED performance statistics tracking. Use when validating with Grok, Gemini, GPT-5, DeepSeek, MiniMax, Kimi, GLM, or Claudish proxy for code review, consensus analysis, or multi-expert validation. NEW in v3.2.0 - Direct API prefixes (mmax/, kimi/, glm/) for cost savings. Includes dynamic model discovery via `claudish --top-models` and `claudish --free`, session-based workspaces, and Pattern 7-8 for tracking model performance. Trigger keywords - \"grok\", \"gemini\", \"gpt-5\", \"deepseek\", \"minimax\", \"kimi\", \"glm\", \"claudish\", \"multiple models\", \"parallel review\", \"external AI\", \"consensus\", \"multi-model\", \"model performance\", \"statistics\", \"free models\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/multimodel/skills/multi-model-validation/SKILL.md",
+      "source": "plugin:multimodel@magus",
+      "categories": [
+        "backend",
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "performance-tracking",
+      "description": "Track agent, skill, and model performance metrics for optimization. Use when measuring agent success rates, tracking model latency, analyzing routing effectiveness, or optimizing cost-per-task. Trigger keywords - \"performance\", \"metrics\", \"tracking\", \"success rate\", \"agent performance\", \"model latency\", \"cost tracking\", \"optimization\", \"routing metrics\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/multimodel/skills/performance-tracking/SKILL.md",
+      "source": "plugin:multimodel@magus",
+      "categories": [
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "proxy-mode-reference",
+      "description": "Reference guide for using external AI models via claudish CLI. Use when running multi-model reviews, understanding how /team invokes external models, or debugging external model integration issues. Includes routing prefixes for MiniMax, Kimi, GLM direct APIs.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/multimodel/skills/proxy-mode-reference/SKILL.md",
+      "source": "plugin:multimodel@magus",
+      "categories": [
+        "debugging",
+        "frontend",
+        "backend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "quality-gates",
+      "description": "Implement quality gates, user approval, iteration loops, and test-driven development. Use when validating with users, implementing feedback loops, classifying issue severity, running test-driven loops, or building multi-iteration workflows. Trigger keywords - \"approval\", \"user validation\", \"iteration\", \"feedback loop\", \"severity\", \"test-driven\", \"TDD\", \"quality gate\", \"consensus\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/multimodel/skills/quality-gates/SKILL.md",
+      "source": "plugin:multimodel@magus",
+      "categories": [
+        "testing",
+        "frontend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "session-isolation",
+      "description": "Use when orchestrating workflows that generate multiple files (designs, reviews, reports) to prevent file collisions across concurrent or sequential sessions with unique session directories.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/multimodel/skills/session-isolation/SKILL.md",
+      "source": "plugin:multimodel@magus",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "task-complexity-router",
+      "description": "Complexity-based task routing for optimal model selection and cost efficiency. Use when deciding which model tier to use, analyzing task complexity, optimizing API costs, or implementing tiered routing. Trigger keywords - \"routing\", \"complexity\", \"model selection\", \"tier\", \"cost optimization\", \"haiku\", \"sonnet\", \"opus\", \"task analysis\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/multimodel/skills/task-complexity-router/SKILL.md",
+      "source": "plugin:multimodel@magus",
+      "categories": [
+        "backend",
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "task-external-models",
+      "description": "Quick-reference for using external AI models in orchestration workflows. External models are invoked via Bash+claudish CLI (deterministic, 100% reliable). Use when confused about how to run external models, \"claudish with Bash\", \"external model in /team\", or \"how to specify external model\". Trigger keywords - \"external model\", \"claudish\", \"Bash claudish\", \"external LLM\", \"model parameter\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/multimodel/skills/task-external-models/SKILL.md",
+      "source": "plugin:multimodel@magus",
+      "categories": [
+        "testing",
+        "frontend",
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "task-orchestration",
+      "description": "Track progress in multi-phase workflows with Tasks system. Use when orchestrating 5+ phase commands, managing iteration loops, tracking parallel tasks, or providing real-time progress visibility. Trigger keywords - \"phase tracking\", \"progress\", \"workflow\", \"multi-step\", \"multi-phase\", \"tasks\", \"tracking\", \"status\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/multimodel/skills/task-orchestration/SKILL.md",
+      "source": "plugin:multimodel@magus",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "debug-mode",
+      "description": "|",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/agentdev/skills/debug-mode/SKILL.md",
+      "source": "plugin:agentdev@magus",
+      "categories": [
+        "debugging"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "patterns",
+      "description": "Common agent patterns and templates for Claude Code. Use when implementing agents to follow proven patterns for Tasks integration, quality checks, and external model invocation via claudish CLI.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/agentdev/skills/patterns/SKILL.md",
+      "source": "plugin:agentdev@magus",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "schemas",
+      "description": "YAML frontmatter schemas for Claude Code agents and commands. Use when creating or validating agent/command files.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/agentdev/skills/schemas/SKILL.md",
+      "source": "plugin:agentdev@magus",
+      "categories": [
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "xml-standards",
+      "description": "XML tag structure patterns for Claude Code agents and commands. Use when designing or implementing agents to ensure proper XML structure following Anthropic best practices.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/agentdev/skills/xml-standards/SKILL.md",
+      "source": "plugin:agentdev@magus",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "yaml-agent-format",
+      "description": "YAML format for Claude Code agent definitions as alternative to markdown. Use when creating agents with YAML, converting markdown agents to YAML, or validating YAML agent schemas. Trigger keywords - \"YAML agent\", \"agent YAML\", \"YAML format\", \"agent schema\", \"YAML definition\", \"convert to YAML\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/agentdev/skills/yaml-agent-format/SKILL.md",
+      "source": "plugin:agentdev@magus",
+      "categories": [
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "analytics-interpretation",
+      "description": "Interpret GA4 and GSC data with benchmarks, status indicators, and actionable insights",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/seo/skills/analytics-interpretation/SKILL.md",
+      "source": "plugin:seo@magus",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "content-brief",
+      "description": "Content brief template and creation methodology for SEO-optimized content. Use when preparing briefs for writers or planning new content pieces.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/seo/skills/content-brief/SKILL.md",
+      "source": "plugin:seo@magus",
+      "categories": [
+        "debugging"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "content-optimizer",
+      "description": "On-page SEO optimization techniques including keyword density, meta tags, heading structure, and readability. Use when optimizing existing content or validating new content against SEO requirements.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/seo/skills/content-optimizer/SKILL.md",
+      "source": "plugin:seo@magus",
+      "categories": [
+        "frontend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "data-extraction-patterns",
+      "description": "Common patterns for extracting analytics data from GA4 and GSC with API handling",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/seo/skills/data-extraction-patterns/SKILL.md",
+      "source": "plugin:seo@magus",
+      "categories": [
+        "backend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "keyword-cluster-builder",
+      "description": "Techniques for expanding seed keywords and clustering by topic and intent. Use when building keyword lists, planning content calendars, or identifying topic clusters for pillar content strategy.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/seo/skills/keyword-cluster-builder/SKILL.md",
+      "source": "plugin:seo@magus",
+      "categories": [
+        "frontend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "link-strategy",
+      "description": "Internal linking strategy and anchor text optimization patterns. Use when planning internal links or optimizing site structure.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/seo/skills/link-strategy/SKILL.md",
+      "source": "plugin:seo@magus",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "performance-correlation",
+      "description": "Correlate content attributes with GA4 and GSC metrics to identify performance drivers",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/seo/skills/performance-correlation/SKILL.md",
+      "source": "plugin:seo@magus",
+      "categories": [
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "schema-markup",
+      "description": "Schema.org markup implementation patterns for rich results. Use when adding structured data to content for enhanced SERP appearances.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/seo/skills/schema-markup/SKILL.md",
+      "source": "plugin:seo@magus",
+      "categories": [
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "serp-analysis",
+      "description": "SERP analysis techniques for intent classification, feature identification, and competitive intelligence. Use when analyzing search results for content strategy.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/seo/skills/serp-analysis/SKILL.md",
+      "source": "plugin:seo@magus",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "technical-audit",
+      "description": "Technical SEO audit methodology including crawlability, indexability, and Core Web Vitals analysis. Use when auditing pages or sites for technical SEO issues.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/seo/skills/technical-audit/SKILL.md",
+      "source": "plugin:seo@magus",
+      "categories": [
+        "debugging"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "adr-documentation",
+      "description": "Architecture Decision Records (ADR) documentation practice. Use when documenting architectural decisions, recording technical trade-offs, creating decision logs, or establishing architectural patterns. Trigger keywords - \"ADR\", \"architecture decision\", \"decision record\", \"trade-offs\", \"architectural decision\", \"decision log\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/adr-documentation/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "debugging",
+        "workflow",
+        "documentation"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "audit",
+      "description": "On-demand security and code quality audit. Use when checking for vulnerabilities, security issues, code smells, or compliance problems. Trigger keywords - \"audit\", \"security check\", \"vulnerability scan\", \"code quality\", \"compliance\", \"security audit\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/audit/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "api-design",
+      "description": "Use when designing REST or GraphQL APIs, defining endpoints, implementing pagination/filtering, handling API versioning, or establishing API documentation with OpenAPI/Swagger.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/backend/api-design/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "backend",
+        "documentation"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "auth-patterns",
+      "description": "Use when implementing authentication (JWT, sessions, OAuth), authorization (RBAC, ABAC), password hashing, MFA, or security best practices for backend services.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/backend/auth-patterns/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "security"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "bunjs",
+      "description": "Use when building Bun.js/Hono applications, implementing HTTP endpoints, setting up Prisma/SQLite, writing Zod validation, or using Bun's test runner. See bunjs-architecture for layered patterns, bunjs-production for deployment.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/backend/bunjs/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "testing",
+        "frontend",
+        "backend",
+        "database",
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "bunjs-apidog",
+      "description": "Use when creating OpenAPI specs for Bun.js APIs, integrating with Apidog, documenting endpoints with schemas, or automating API specification imports via Apidog REST API. See bunjs for basics.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/backend/bunjs-apidog/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "testing",
+        "backend",
+        "database",
+        "workflow",
+        "documentation"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "bunjs-architecture",
+      "description": "Use when implementing clean architecture (routes/controllers/services/repositories), establishing camelCase conventions, designing Prisma schemas, or planning structured workflows for Bun.js applications. See bunjs for basics, bunjs-production for deployment.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/backend/bunjs-architecture/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "backend",
+        "database",
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "bunjs-production",
+      "description": "Use when deploying Bun.js to production, containerizing with Docker, setting up AWS ECS/Fargate, implementing Redis caching, hardening security, or configuring CI/CD pipelines. See bunjs for basics, bunjs-architecture for patterns.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/backend/bunjs-production/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "workflow",
+        "documentation"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "database-patterns",
+      "description": "Use when designing database schemas, implementing repository patterns, writing optimized queries, managing migrations, or working with indexes and transactions for SQL/NoSQL databases.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/backend/database-patterns/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "dingo",
+      "description": "Use when working with Dingo meta-language for Go, implementing optionals/results, using generics shortcuts, or transpiling .dingo files to .go while maintaining Go compatibility.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/backend/dingo/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "error-handling",
+      "description": "Use when implementing custom error classes, error middleware, structured logging, retry logic, or graceful shutdown patterns in backend applications.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/backend/error-handling/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "debugging",
+        "backend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "golang",
+      "description": "Use when building Go backend services, implementing goroutines/channels, handling errors idiomatically, writing tests with testify, or following Go best practices for APIs/CLI tools.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/backend/golang/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "testing",
+        "debugging",
+        "frontend",
+        "backend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "golang-performance",
+      "description": "Use when profiling Go applications (pprof), running benchmarks, optimizing memory/CPU usage, or debugging performance bottlenecks in production Go code.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/backend/golang-performance/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "debugging",
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "python",
+      "description": "Use when building FastAPI applications, implementing async endpoints, setting up Pydantic schemas, working with SQLAlchemy, or writing pytest tests for Python backend services.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/backend/python/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "testing",
+        "frontend",
+        "backend",
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "rust",
+      "description": "Use when building Axum applications, implementing type-safe handlers, working with SQLx, setting up error handling with thiserror, or writing Rust backend services.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/backend/rust/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "debugging",
+        "frontend",
+        "backend",
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "context-detection",
+      "description": "Use when detecting project technology stack from files/configs/directory structure, auto-loading framework-specific skills, or analyzing multi-stack fullstack projects (e.g., React + Go).",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/context-detection/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "testing",
+        "debugging",
+        "frontend",
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "debugging-strategies",
+      "description": "Use when troubleshooting bugs, analyzing stack traces, using debugging tools (breakpoints, loggers), or applying systematic debugging methodology across any technology stack.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/core/debugging-strategies/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "debugging"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "testing-strategies",
+      "description": "Use when writing tests, setting up test frameworks, implementing mocking strategies, or establishing testing best practices (unit, integration, E2E) across any technology stack.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/core/testing-strategies/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "testing",
+        "debugging"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "universal-patterns",
+      "description": "Use when implementing language-agnostic patterns like layered architecture, dependency injection, error handling, or code organization principles across any technology stack.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/core/universal-patterns/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "debugging",
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "design-references",
+      "description": "|",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/design/design-references/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "ui-analyse",
+      "description": "|",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/design/ui-analyse/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "frontend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "ui-design-review",
+      "description": "|",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/design/ui-design-review/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "frontend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "ui-implement",
+      "description": "|",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/design/ui-implement/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "frontend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "ui-style-format",
+      "description": "|",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/design/ui-style-format/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "frontend",
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "agent-coordination-discipline",
+      "description": "Use when deciding whether to launch an agent, selecting which agent to use, or coordinating multiple agents. Covers delegation criteria, external-model patterns, task isolation, and agent selection strategies.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/discipline/agent-coordination-discipline/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "systematic-debugging",
+      "description": "Use when debugging failures, errors, or unexpected behavior. Covers root cause investigation, data flow tracing, hypothesis-driven debugging, and fix verification to prevent trial-and-error approaches.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/discipline/systematic-debugging/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "debugging",
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "test-driven-development",
+      "description": "Use when writing production code. Enforces RED-GREEN-REFACTOR cycle: write failing test, make it pass, improve design. Prevents test-after development and ensures verified behavior.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/discipline/test-driven-development/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "testing"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "verification-before-completion",
+      "description": "Use when claiming task completion or marking items as done. Covers completion evidence requirements, verification methods, and anti-rationalization patterns.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/discipline/verification-before-completion/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "frontend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "worktree-lifecycle",
+      "description": "Use when starting isolated feature work or before executing implementation plans. Manages full worktree lifecycle from creation through cleanup with safety checks and error recovery.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/discipline/worktree-lifecycle/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "debugging"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "documentation-standards",
+      "description": "Use when writing README files, API documentation, user guides, or technical documentation following industry standards from Google, Microsoft, and GitLab style guides.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/documentation-standards/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "frontend",
+        "backend",
+        "documentation"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "phase-enforcement",
+      "description": "Evidence-based phase completion enforcement for /dev:feature. Use when orchestrating 8-phase feature development to ensure artifacts exist before phase completion, validation criteria are addressed, outer loops are enforced, and show-your-work requirements are met.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/enforcement/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "frontend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "browser-debugging",
+      "description": "Systematically tests UI functionality, validates design fidelity with AI visual analysis, monitors console output, tracks network requests, and provides debugging reports using Chrome Extension MCP tools. Use after implementing UI features, for design validation, when investigating console errors, for regression testing, or when user mentions testing, browser bugs, console errors, or UI verification.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/frontend/browser-debugging/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "testing",
+        "debugging",
+        "frontend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "css-modules",
+      "description": "|",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/frontend/css-modules/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "frontend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "react-typescript",
+      "description": "Modern React 19+ patterns with TypeScript including function components, hooks, state management, TanStack Query integration, form handling with Zod, error boundaries, and performance optimization. Use when building React applications, implementing components, or setting up state management.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/frontend/react-typescript/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "debugging",
+        "frontend",
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "shadcn-ui",
+      "description": "shadcn/ui component library patterns. Covers CLI usage, installation, component categories, theming with CSS variables, dark mode setup, and integration with React Hook Form + Zod. Use when adding UI components, setting up design systems, or implementing forms with shadcn/ui.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/frontend/shadcn-ui/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "frontend",
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "state-management",
+      "description": "Use when choosing state management solutions, implementing global stores (Zustand, Pinia), managing server state (TanStack Query), or handling URL state in frontend applications across React and Vue.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/frontend/state-management/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "frontend",
+        "backend",
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "tailwindcss",
+      "description": "|",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/frontend/tailwindcss/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "frontend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "tanstack-query",
+      "description": "Comprehensive TanStack Query v5 patterns for async state management. Covers breaking changes, query key factories, data transformation, mutations, optimistic updates, authentication, testing with MSW, and anti-patterns. Use for all server state management, data fetching, and cache invalidation tasks.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/frontend/tanstack-query/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "testing",
+        "backend",
+        "database",
+        "security"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "tanstack-router",
+      "description": "TanStack Router patterns for type-safe, file-based routing. Covers installation, route configuration, typed params/search, layouts, and navigation. Use when setting up routes, implementing navigation, or configuring route loaders.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/frontend/tanstack-router/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "frontend",
+        "backend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "testing-frontend",
+      "description": "Use when writing component tests, testing user interactions, mocking APIs, or setting up Vitest/React Testing Library/Vue Test Utils for frontend applications.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/frontend/testing-frontend/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "testing",
+        "frontend",
+        "backend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "vue-typescript",
+      "description": "Use when building Vue 3 applications with TypeScript, implementing Composition API components, setting up Pinia stores, or working with Vue Router. Covers script setup, composables, and reactive state.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/frontend/vue-typescript/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "frontend",
+        "backend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "mcp-standards",
+      "description": "MCP server standardization patterns for Claude Code plugins. Use when implementing MCP servers, designing tool interfaces, configuring MCP transports, or standardizing MCP naming conventions. Trigger keywords - \"MCP\", \"MCP server\", \"MCP tools\", \"MCP transport\", \"tool naming\", \"MCP configuration\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/mcp-standards/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "backend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "optimize",
+      "description": "On-demand performance and optimization analysis. Use when identifying bottlenecks, improving build times, reducing bundle size, or optimizing code performance. Trigger keywords - \"optimize\", \"performance\", \"bottleneck\", \"bundle size\", \"build time\", \"speed up\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/optimize/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "frontend",
+        "database",
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "brainstorming",
+      "description": "Collaborative ideation and planning with resilient multi-model exploration, consensus scoring, and adaptive confidence-based validation",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/planning/brainstorming/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "plugin-sdk-patterns",
+      "description": "Unified patterns and templates for creating consistent Claude Code plugins. Use when creating new plugins, designing plugin architecture, implementing builder patterns, or standardizing plugin structure. Trigger keywords - \"plugin SDK\", \"plugin template\", \"plugin pattern\", \"builder pattern\", \"plugin structure\", \"new plugin\", \"plugin architecture\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/plugin-sdk-patterns/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "frontend"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "task-routing",
+      "description": "Use BEFORE delegating any complex task to a subagent. Contains the routing table that maps task patterns to the correct specialized agent. MUST be consulted before using the Task tool for delegation decisions. Trigger keywords - \"delegate\", \"subagent\", \"agent\", \"research\", \"implement\", \"investigate\", \"debug\", \"architect\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/task-routing/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "testing",
+        "debugging",
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "test-coverage",
+      "description": "On-demand test coverage analysis. Use when identifying untested code, finding test gaps, measuring coverage metrics, or improving test quality. Trigger keywords - \"test coverage\", \"coverage report\", \"untested code\", \"test gaps\", \"missing tests\", \"coverage metrics\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/dev/skills/test-coverage/SKILL.md",
+      "source": "plugin:dev@magus",
+      "categories": [
+        "testing"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "statusline-customization",
+      "description": "Configuration reference and troubleshooting for the statusline plugin \u2014 sections, themes, bar widths, and script architecture",
+      "path": "/Users/jack/.claude/plugins/marketplaces/magus/plugins/statusline/skills/statusline-customization/SKILL.md",
+      "source": "plugin:statusline@magus",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "playground",
+      "description": "Creates interactive HTML playgrounds \u2014 self-contained single-file explorers that let users configure something visually through controls, see a live preview, and copy out a prompt. Use when the user asks to make a playground, explorer, or interactive tool for a topic.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/claude-plugins-official/plugins/playground/skills/playground/SKILL.md",
+      "source": "plugin:playground@claude-plugins-official",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "claude-automation-recommender",
+      "description": "Analyze a codebase and recommend Claude Code automations (hooks, subagents, skills, plugins, MCP servers). Use when user asks for automation recommendations, wants to optimize their Claude Code setup, mentions improving Claude Code workflows, asks how to first set up Claude Code for a project, or wants to know what Claude Code features they should use.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/claude-plugins-official/plugins/claude-code-setup/skills/claude-automation-recommender/SKILL.md",
+      "source": "plugin:claude-code-setup@claude-plugins-official",
+      "categories": [
+        "backend",
+        "workflow"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "claude-md-improver",
+      "description": "Audit and improve CLAUDE.md files in repositories. Use when user asks to check, audit, update, improve, or fix CLAUDE.md files. Scans for all CLAUDE.md files, evaluates quality against templates, outputs quality report, then makes targeted updates. Also use when the user mentions \"CLAUDE.md maintenance\" or \"project memory optimization\".",
+      "path": "/Users/jack/.claude/plugins/marketplaces/claude-plugins-official/plugins/claude-md-management/skills/claude-md-improver/SKILL.md",
+      "source": "plugin:claude-md-management@claude-plugins-official",
+      "categories": [],
+      "userInvocable": true,
+      "modelInvocable": true
+    },
+    {
+      "name": "skill-creator",
+      "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, update or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
+      "path": "/Users/jack/.claude/plugins/marketplaces/claude-plugins-official/plugins/skill-creator/skills/skill-creator/SKILL.md",
+      "source": "plugin:skill-creator@claude-plugins-official",
+      "categories": [
+        "testing",
+        "database"
+      ],
+      "userInvocable": true,
+      "modelInvocable": true
+    }
+  ],
+  "bundled_skill_paths": [
+    "${PLUGIN_ROOT}/skills/core/universal-patterns/SKILL.md",
+    "${PLUGIN_ROOT}/skills/core/testing-strategies/SKILL.md",
+    "${PLUGIN_ROOT}/skills/core/debugging-strategies/SKILL.md",
+    "${PLUGIN_ROOT}/skills/backend/bunjs/SKILL.md",
+    "${PLUGIN_ROOT}/skills/backend/api-design/SKILL.md",
+    "${PLUGIN_ROOT}/skills/backend/database-patterns/SKILL.md",
+    "${PLUGIN_ROOT}/skills/backend/auth-patterns/SKILL.md",
+    "${PLUGIN_ROOT}/skills/backend/error-handling/SKILL.md",
+    "${PLUGIN_ROOT}/skills/frontend/react-typescript/SKILL.md",
+    "${PLUGIN_ROOT}/skills/frontend/state-management/SKILL.md",
+    "${PLUGIN_ROOT}/skills/frontend/testing-frontend/SKILL.md"
+  ],
+  "quality_checks": {
+    "backend": [
+      "bun run format",
+      "bun run lint",
+      "bun run typecheck",
+      "bun test"
+    ],
+    "frontend": [
+      "bun run format",
+      "bun run lint",
+      "bun run typecheck",
+      "bun test"
+    ]
+  },
+  "frameworks": {
+    "bun": "latest",
+    "typescript": "strict",
+    "grammy": "planned",
+    "vercel-ai-sdk": "planned",
+    "react": "planned (optional)",
+    "tanstack-query": "planned (optional)",
+    "tanstack-router": "planned (optional)",
+    "deepgram-sdk": "planned",
+    "elevenlabs-sdk": "planned",
+    "twilio-sdk": "planned (voice MVP)",
+    "livekit-sdk": "planned (voice production)",
+    "neon": "planned (optional DB)"
+  }
+}

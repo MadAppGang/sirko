@@ -1,0 +1,22 @@
+{
+  "name": "@sirko/integration-tests",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@sirko/shared": "workspace:*",
+    "@sirko/event-bus": "workspace:*",
+    "@sirko/pipeline": "workspace:*",
+    "@sirko/state-store": "workspace:*",
+    "@sirko/detector": "workspace:*",
+    "@sirko/tool-plugins": "workspace:*",
+    "@sirko/tmux-client": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "*",
+    "@types/bun": "*"
+  }
+}
