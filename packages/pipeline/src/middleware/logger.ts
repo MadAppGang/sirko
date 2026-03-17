@@ -28,6 +28,7 @@ function ts(): string {
  */
 export function createLoggerMiddleware(options?: LoggerOptions): Middleware {
   const level = options?.level ?? 'info'
+  const seenPanes = new Set<string>()
 
   return async function loggerMiddleware(
     ctx: EventContext,
@@ -78,7 +79,16 @@ export function createLoggerMiddleware(options?: LoggerOptions): Middleware {
         } else if (text.length > 0) {
           const oneLine = text.replace(/\n+/g, ' ').slice(0, 120)
           const isError = /command not found|no such file|permission denied|error:|fatal:|panic:|segfault/i.test(oneLine)
-          console.log(`${ts()} ${isError ? '❌' : '📤'} ${paneId} ${oneLine}`)
+          const isFirstOutput = paneId !== null && !seenPanes.has(paneId)
+          if (paneId !== null) seenPanes.add(paneId)
+
+          if (isError) {
+            console.log(`${ts()} ❌ ${paneId} ${oneLine}`)
+          } else if (isFirstOutput) {
+            console.log(`${ts()} 🚀 ${paneId} started — ${oneLine}`)
+          } else if (shouldLog(level, 'debug')) {
+            console.log(`${ts()} 📤 ${paneId} ${oneLine}`)
+          }
         }
         return
       }
