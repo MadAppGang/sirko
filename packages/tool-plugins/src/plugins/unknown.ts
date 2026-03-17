@@ -5,7 +5,7 @@ export const unknownSkill: SkillDefinition = {
   displayName: 'Unknown Tool',
   binaryPattern: /.*/,
   processNamePattern: /.*/,
-  promptPatterns: [/^> /m, /^\? /m, /\(y\/n\)/i],
+  promptPatterns: [/^>[\s\u00a0]/m, /^❯[\s\u00a0]/m, /^\?[\s\u00a0]/m, /\(y\/n\)/i],
   promptPatternWeight: 0.50,
   quiescenceThresholdMs: 2000,
   quiescenceWeight: 0.20,

@@ -5,7 +5,7 @@ export const claudeCodeSkill: SkillDefinition = {
   displayName: 'Claude Code',
   binaryPattern: /claude$/i,
   processNamePattern: /claude/i,
-  promptPatterns: [/^> $/m, /^❯ $/m, /^> \s*$/m],
+  promptPatterns: [/^>\s*$/m, /^❯[\s\u00a0]*$/m],
   promptPatternWeight: 0.45,
   quiescenceThresholdMs: 1800,
   quiescenceWeight: 0.20,
