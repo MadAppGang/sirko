@@ -72,13 +72,15 @@ export class TmuxClient {
     // (the result of the implicit new-session command in the spawn args).
     // This ensures the FIFO queue is drained before callers issue commands.
     await this._startupReady
-    // Use the user's login shell as an interactive login shell so aliases,
-    // PATH, env vars from .zshrc/.bashrc are available in new windows.
+    // Configure the sirko-bot session for good UX:
     const userShell = process.env['SHELL'] ?? '/bin/zsh'
     try {
+      // Use interactive login shell so aliases, PATH, env vars are available
       await this.sendCommand(`set -g default-command "${userShell} -li"`)
+      // Keep panes open after command exits so errors are visible
+      await this.sendCommand('set -g remain-on-exit on')
     } catch {
-      // Non-fatal — falls back to tmux default
+      // Non-fatal — falls back to tmux defaults
     }
   }
 

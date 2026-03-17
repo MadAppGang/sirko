@@ -73,7 +73,19 @@ export function createLoggerMiddleware(options?: LoggerOptions): Middleware {
       }
 
       if (event.type === 'pane-exited') {
-        console.log(`${ts()} 🚪 exited ${paneId} (${totalMs}ms)`)
+        console.log(`${ts()} 🚪 pane exited ${paneId}`)
+        return
+      }
+
+      if (event.type === 'window-add') {
+        const wid = 'windowId' in event ? (event as { windowId: string }).windowId : ''
+        console.log(`${ts()} 🪟 new window ${wid}`)
+        return
+      }
+
+      if (event.type === 'window-close') {
+        const wid = 'windowId' in event ? (event as { windowId: string }).windowId : ''
+        console.log(`${ts()} 🪟 window closed ${wid}`)
         return
       }
 
@@ -81,14 +93,6 @@ export function createLoggerMiddleware(options?: LoggerOptions): Middleware {
         if (shouldLog(level, 'debug')) {
           const sid = 'sessionId' in event ? (event as { sessionId: string }).sessionId : ''
           console.log(`${ts()} 📋 ${event.type} ${sid}`)
-        }
-        return
-      }
-
-      if (event.type === 'window-add' || event.type === 'window-close') {
-        if (shouldLog(level, 'debug')) {
-          const wid = 'windowId' in event ? (event as { windowId: string }).windowId : ''
-          console.log(`${ts()} 🪟 ${event.type} ${wid}`)
         }
         return
       }

@@ -25,11 +25,8 @@ export interface OrchestratorHandle {
 export async function createOrchestrator(
   config: OrchestratorConfig,
 ): Promise<OrchestratorHandle> {
-  console.log('[sirko] creating orchestrator', {
-    dataDir: config.dataDir,
-    logLevel: config.logLevel,
-    tmuxSocketPath: config.tmuxSocketPath,
-  })
+  const socketName = config.tmuxSocketPath ?? 'sirko'
+  console.log(`[sirko] starting (socket: ${socketName}, logLevel: ${config.logLevel})`)
 
   // 1. Create and load StateStore
   const store = createStateStore({
@@ -76,25 +73,7 @@ export async function createOrchestrator(
     logLevel: config.logLevel,
   })
 
-  // 8. Log events to stdout
-  bus.on('PaneOutput', (event) => {
-    if (config.logLevel === 'debug') {
-      console.log('[bus] PaneOutput', event.paneId, event.text.slice(0, 80))
-    }
-  })
-  bus.on('PaneAwaitingInput', (event) => {
-    console.log('[bus] PaneAwaitingInput', {
-      paneId: event.paneId,
-      tool: event.tool,
-      score: event.score,
-      confidence: event.confidence,
-    })
-  })
-  bus.on('PaneExited', (event) => {
-    console.log('[bus] PaneExited', { paneId: event.paneId, exitCode: event.exitCode })
-  })
-
-  // 9. Create per-pane serializer and quiescence scheduler
+  // 8. Create per-pane serializer and quiescence scheduler
   const serializer = new PaneSerializer()
 
   const scheduler = new QuiescenceScheduler(
@@ -118,7 +97,8 @@ export async function createOrchestrator(
       eventLoopAbort = new AbortController()
       const { signal } = eventLoopAbort
 
-      console.log('[sirko] listening for tmux events...')
+      console.log(`[sirko] ready — tmux -L ${socketName} new-window -t sirko-bot "<command>"`)
+      console.log(`[sirko] attach — tmux -L ${socketName} attach -t sirko-bot`)
 
       // Process tmux events — runs until stop() is called
       const processEvents = async () => {
