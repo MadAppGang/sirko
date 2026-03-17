@@ -77,13 +77,14 @@ export function createLoggerMiddleware(options?: LoggerOptions): Middleware {
           )
         } else if (text.length > 0) {
           const oneLine = text.replace(/\n+/g, ' ').slice(0, 120)
-          console.log(`${ts()} 📤 ${paneId} ${oneLine}`)
+          const isError = /command not found|no such file|permission denied|error:|fatal:|panic:|segfault/i.test(oneLine)
+          console.log(`${ts()} ${isError ? '❌' : '📤'} ${paneId} ${oneLine}`)
         }
         return
       }
 
       if (event.type === 'pane-exited') {
-        console.log(`${ts()} 🚪 pane exited ${paneId}`)
+        console.log(`${ts()} 💀 ${paneId} exited`)
         return
       }
 
@@ -95,7 +96,7 @@ export function createLoggerMiddleware(options?: LoggerOptions): Middleware {
 
       if (event.type === 'window-close') {
         const wid = 'windowId' in event ? (event as { windowId: string }).windowId : ''
-        console.log(`${ts()} 🪟 window closed ${wid}`)
+        console.log(`${ts()} 💀 window ${wid} closed (command exited)`)
         return
       }
 
