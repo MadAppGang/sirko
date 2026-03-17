@@ -72,6 +72,14 @@ export class TmuxClient {
     // (the result of the implicit new-session command in the spawn args).
     // This ensures the FIFO queue is drained before callers issue commands.
     await this._startupReady
+    // Use the user's login shell as an interactive login shell so aliases,
+    // PATH, env vars from .zshrc/.bashrc are available in new windows.
+    const userShell = process.env['SHELL'] ?? '/bin/zsh'
+    try {
+      await this.sendCommand(`set -g default-command "${userShell} -li"`)
+    } catch {
+      // Non-fatal — falls back to tmux default
+    }
   }
 
   async disconnect(): Promise<void> {
