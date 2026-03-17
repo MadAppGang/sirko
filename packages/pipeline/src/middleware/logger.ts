@@ -59,15 +59,25 @@ export function createLoggerMiddleware(options?: LoggerOptions): Middleware {
       }
 
       if (event.type === 'pane-output') {
+        const raw = 'raw' in event ? (event as { raw: string }).raw : ''
+        // Strip ANSI escapes and control chars
+        const text = raw
+          .replace(/\x1b\[[0-9;]*[a-zA-Z]/g, '')  // CSI sequences
+          .replace(/\x1b\][^\x07]*\x07/g, '')      // OSC sequences
+          .replace(/\x1b[()][AB012]/g, '')          // charset
+          .replace(/\x1b[78DMEHcnop><=]/g, '')      // single-char escapes
+          .replace(/\x1bk[^\x1b]*\x1b\\/g, '')      // tmux title sequences
+          .replace(/[\x00-\x09\x0b-\x1f\x7f]/g, '')  // control chars (keep \n)
+          .replace(/\r\n?/g, '\n')                     // normalize newlines
+          .trim()
+
         if (detection?.awaiting) {
           console.log(
             `${ts()} ⚡ DETECTED ${paneId} awaiting input — score: ${detection.score.toFixed(2)} (${totalMs}ms)`,
           )
-        } else if (shouldLog(level, 'debug')) {
-          const text = 'raw' in event ? (event as { raw: string }).raw.slice(0, 60).replace(/[\x00-\x1f]/g, ' ') : ''
-          console.log(
-            `${ts()} 📤 output ${paneId} — ${text.trim() || '(empty)'} (${totalMs}ms)`,
-          )
+        } else if (text.length > 0) {
+          const oneLine = text.replace(/\n+/g, ' ').slice(0, 120)
+          console.log(`${ts()} 📤 ${paneId} ${oneLine}`)
         }
         return
       }

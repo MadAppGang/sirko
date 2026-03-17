@@ -11,7 +11,7 @@ export function unescapeTmuxOutput(raw: string): string {
   let i = 0
   while (i < raw.length) {
     if (raw[i] === '\\' && i + 1 < raw.length) {
-      const next = raw[i + 1]
+      const next = raw[i + 1]!
       if (next === '\\') {
         result += '\\'
         i += 2
@@ -24,6 +24,14 @@ export function unescapeTmuxOutput(raw: string): string {
         result += '\r'
         i += 2
         continue
+      } else if (next >= '0' && next <= '3' && i + 3 < raw.length) {
+        // Octal escape: \NNN (e.g. \015 = CR, \012 = LF, \033 = ESC)
+        const octal = raw.slice(i + 1, i + 4)
+        if (/^[0-7]{3}$/.test(octal)) {
+          result += String.fromCharCode(parseInt(octal, 8))
+          i += 4
+          continue
+        }
       }
     }
     result += raw[i]

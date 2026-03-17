@@ -77,8 +77,6 @@ export class TmuxClient {
     try {
       // Use interactive login shell so aliases, PATH, env vars are available
       await this.sendCommand(`set -g default-command "${userShell} -li"`)
-      // Keep panes open after command exits so errors are visible
-      await this.sendCommand('set -g remain-on-exit on')
     } catch {
       // Non-fatal — falls back to tmux defaults
     }
