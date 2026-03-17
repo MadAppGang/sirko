@@ -68,7 +68,7 @@ export interface ProcessInfo {
 // Terminal emulator abstraction — defined in @sirko/shared (not @sirko/tmux-client) so PaneState
 // can reference it without a circular dependency.
 export interface TerminalEmulator {
-  write(raw: string): void
+  write(raw: string): void | Promise<void>
   getBuffer(): string       // current full screen as plain text
   getCursor(): CursorState
 }

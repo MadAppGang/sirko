@@ -14,6 +14,8 @@ export interface TelegramAdapterOptions {
   groupId: number
   /** Streaming mode: 'draft' | 'edit'. Default: 'edit' */
   streamingMode?: 'draft' | 'edit'
+  /** Custom API root URL for grammY Bot client (e.g. for test mock servers) */
+  apiRoot?: string
 }
 
 /**
@@ -42,6 +44,7 @@ export class TelegramAdapter implements AdapterSink {
       botToken: options.botToken,
       groupId: options.groupId,
       streamingMode: options.streamingMode ?? 'edit',
+      apiRoot: options.apiRoot ?? '',
     }
     this.store = store
     this.tmuxClient = tmuxClient
@@ -53,7 +56,9 @@ export class TelegramAdapter implements AdapterSink {
   async start(): Promise<void> {
     if (this.running) return
 
-    const bot = new Bot(this.options.botToken)
+    const bot = new Bot(this.options.botToken, {
+      ...(this.options.apiRoot !== '' ? { client: { apiRoot: this.options.apiRoot } } : {}),
+    })
 
     // Install API transformer plugins
     bot.api.config.use(autoRetry())

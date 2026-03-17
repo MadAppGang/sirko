@@ -152,6 +152,26 @@
         "typescript": "*",
       },
     },
+    "tests/e2e": {
+      "name": "@sirko/e2e-tests",
+      "version": "0.0.1",
+      "dependencies": {
+        "@sirko/detector": "workspace:*",
+        "@sirko/event-bus": "workspace:*",
+        "@sirko/orchestrator": "workspace:*",
+        "@sirko/pipeline": "workspace:*",
+        "@sirko/shared": "workspace:*",
+        "@sirko/state-store": "workspace:*",
+        "@sirko/telegram-bot": "workspace:*",
+        "@sirko/tmux-client": "workspace:*",
+        "@sirko/tool-plugins": "workspace:*",
+        "@sirko/voice-server": "workspace:*",
+      },
+      "devDependencies": {
+        "@types/bun": "*",
+        "typescript": "*",
+      },
+    },
     "tests/integration": {
       "name": "@sirko/integration-tests",
       "version": "0.0.1",
@@ -192,6 +212,8 @@
     "@opentelemetry/api": ["@opentelemetry/api@1.9.0", "", {}, "sha512-3giAOQvZiH5F9bMlMiv8+GSPMeqg0dbaeo58/0SlA9sxSqZhnUtxzX9/2FzyhS9sWQf5S0GJE0AKBrFqjpeYcg=="],
 
     "@sirko/detector": ["@sirko/detector@workspace:packages/detector"],
+
+    "@sirko/e2e-tests": ["@sirko/e2e-tests@workspace:tests/e2e"],
 
     "@sirko/event-bus": ["@sirko/event-bus@workspace:packages/event-bus"],
 

@@ -61,9 +61,9 @@ export function createXtermInterpretMiddleware(
         ctx.pane = pane
       }
 
-      // Feed raw output
+      // Feed raw output (may be async for XtermEmulator)
       const raw = ctx.event.raw
-      emulator.write(raw)
+      await emulator.write(raw)
 
       // Capture state
       const buffer = emulator.getBuffer()

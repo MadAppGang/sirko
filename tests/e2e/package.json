@@ -1,0 +1,25 @@
+{
+  "name": "@sirko/e2e-tests",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "bun test --timeout 60000"
+  },
+  "dependencies": {
+    "@sirko/shared": "workspace:*",
+    "@sirko/event-bus": "workspace:*",
+    "@sirko/pipeline": "workspace:*",
+    "@sirko/state-store": "workspace:*",
+    "@sirko/detector": "workspace:*",
+    "@sirko/tool-plugins": "workspace:*",
+    "@sirko/tmux-client": "workspace:*",
+    "@sirko/orchestrator": "workspace:*",
+    "@sirko/telegram-bot": "workspace:*",
+    "@sirko/voice-server": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "*",
+    "@types/bun": "*"
+  }
+}

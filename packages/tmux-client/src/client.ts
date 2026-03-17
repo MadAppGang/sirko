@@ -238,7 +238,7 @@ export class TmuxClient {
     if (this.options.socketName) {
       args.push('-L', this.options.socketName)
     }
-    args.push('-C', 'new-session')
+    args.push('-C', 'new-session', '-A', '-s', 'sirko-bot')
 
     // Push a sentinel inflight entry so the initial %begin/%end block emitted
     // by tmux for the implicit new-session command is properly consumed.

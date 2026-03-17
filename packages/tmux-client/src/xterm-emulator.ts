@@ -13,9 +13,11 @@ export class XtermEmulator implements TerminalEmulator {
     this.term = term
   }
 
-  write(raw: string): void {
-    // @xterm/headless write accepts string or Uint8Array
-    this.term.write(raw)
+  write(raw: string): Promise<void> {
+    // @xterm/headless write is async; use callback to know when data is processed
+    return new Promise<void>((resolve) => {
+      this.term.write(raw, () => resolve())
+    })
   }
 
   getBuffer(): string {

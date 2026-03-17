@@ -58,6 +58,30 @@ export function createNotificationFanoutMiddleware(bus: TypedEventBus): Middlewa
           }
         }
       }
+    } else if (event.type === 'quiescence-check' && pane !== null) {
+      // Quiescence checks can also trigger PaneAwaitingInput
+      if (!ctx.aborted && ctx.detectionResult?.awaiting === true) {
+        const awaitingEvent = {
+          type: 'PaneAwaitingInput' as const,
+          paneId: pane.paneId,
+          sessionId: pane.sessionId,
+          tool: pane.tool,
+          confidence: ctx.detectionResult.confidence,
+          score: ctx.detectionResult.score,
+          context: pane.lastBufferSnapshot,
+          signals: ctx.detectionResult.signals,
+        }
+        ctx.sideEffects.push({ kind: 'bus-emit', event: awaitingEvent })
+        await bus.emit(awaitingEvent)
+
+        if (ctx.pane !== null) {
+          ctx.pane = {
+            ...ctx.pane,
+            notificationState: 'notified',
+            lastNotifiedAt: Date.now(),
+          }
+        }
+      }
     } else if (event.type === 'pane-exited' && pane !== null) {
       const exitedEvent = {
         type: 'PaneExited' as const,
