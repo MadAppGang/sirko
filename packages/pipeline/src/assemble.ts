@@ -9,7 +9,7 @@ import { createDetectionMiddleware } from './middleware/detection.js'
 import { createDedupMiddleware } from './middleware/dedup.js'
 import { createNotificationFanoutMiddleware } from './middleware/notification-fanout.js'
 import { createOutputArchiveMiddleware } from './middleware/output-archive.js'
-import { createLoggerMiddleware } from './middleware/logger.js'
+import { createLoggerMiddleware, type LogLevel } from './middleware/logger.js'
 
 export interface AssemblePipelineDeps {
   store: StateStore
@@ -17,6 +17,7 @@ export interface AssemblePipelineDeps {
   tmuxClient: TmuxClient
   engine: DetectorEngine
   logDir: string
+  logLevel?: LogLevel
 }
 
 /**
@@ -36,6 +37,6 @@ export function assemblePipeline(deps: AssemblePipelineDeps): Pipeline {
     createDedupMiddleware(),
     createNotificationFanoutMiddleware(bus),
     createOutputArchiveMiddleware({ logDir }),
-    createLoggerMiddleware(),
+    createLoggerMiddleware({ level: deps.logLevel }),
   ])
 }

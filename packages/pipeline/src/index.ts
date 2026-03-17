@@ -16,3 +16,4 @@ export { createNotificationFanoutMiddleware } from './middleware/notification-fa
 export { createOutputArchiveMiddleware } from './middleware/output-archive.js'
 export type { OutputArchiveOptions } from './middleware/output-archive.js'
 export { createLoggerMiddleware } from './middleware/logger.js'
+export type { LogLevel, LoggerOptions } from './middleware/logger.js'

@@ -73,6 +73,7 @@ export async function createOrchestrator(
     tmuxClient,
     engine,
     logDir: config.logDir,
+    logLevel: config.logLevel,
   })
 
   // 8. Log events to stdout

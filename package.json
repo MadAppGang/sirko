@@ -13,8 +13,8 @@
     "typecheck": "turbo run typecheck",
     "lint": "turbo run lint",
     "format": "turbo run format",
-    "dev": "bun run --filter orchestrator dev",
-    "start": "bun run --filter orchestrator start"
+    "dev": "bun --watch run apps/orchestrator/src/main.ts",
+    "start": "bun run apps/orchestrator/src/main.ts"
   },
   "devDependencies": {
     "turbo": "^2.0.0",

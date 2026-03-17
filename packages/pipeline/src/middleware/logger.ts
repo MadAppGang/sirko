@@ -1,14 +1,34 @@
 import type { Middleware } from '../compose.js'
 import type { EventContext } from '../context.js'
 
+export type LogLevel = 'debug' | 'info' | 'warn' | 'error'
+
+export interface LoggerOptions {
+  level?: LogLevel
+}
+
+const LEVEL_RANK: Record<LogLevel, number> = { debug: 0, info: 1, warn: 2, error: 3 }
+
+function shouldLog(configured: LogLevel, messageLevel: LogLevel): boolean {
+  return LEVEL_RANK[messageLevel] >= LEVEL_RANK[configured]
+}
+
+function ts(): string {
+  return new Date().toLocaleTimeString('en-GB', { hour12: false })
+}
+
 /**
- * Structured JSON logging of pipeline execution.
+ * Human-readable pipeline logger.
+ *
+ * Log levels:
+ *   debug — every pipeline event (quiescence-check, pane-output, etc.)
+ *   info  — only interesting events (detection fired, pane exited, errors)
  *
  * Runs after all other middleware (last in compose array).
- * Emits one JSON line to stdout per event processed.
- * Swallows all errors (must never crash the pipeline).
  */
-export function createLoggerMiddleware(): Middleware {
+export function createLoggerMiddleware(options?: LoggerOptions): Middleware {
+  const level = options?.level ?? 'info'
+
   return async function loggerMiddleware(
     ctx: EventContext,
     next: () => Promise<void>,
@@ -17,27 +37,66 @@ export function createLoggerMiddleware(): Middleware {
 
     try {
       const event = ctx.event
-      const pane = ctx.pane
-
-      const paneId = 'paneId' in event ? (event as { paneId: string }).paneId : undefined
-      const sessionId = 'sessionId' in event ? (event as { sessionId: string }).sessionId : undefined
-
+      const paneId = 'paneId' in event ? (event as { paneId: string }).paneId : null
       const totalMs = Date.now() - ctx.startedAt
+      const detection = ctx.detectionResult
 
-      const logEntry = {
-        ts: Date.now(),
-        event: event.type,
-        paneId,
-        sessionId,
-        tool: pane?.tool,
-        detectionScore: ctx.detectionResult?.score,
-        awaiting: ctx.detectionResult?.awaiting,
-        aborted: ctx.aborted,
-        durations: ctx.middlewareDurations,
-        totalMs,
+      // --- debug: log everything ---
+      if (event.type === 'quiescence-check') {
+        if (detection?.awaiting) {
+          // Always log when detection fires
+          console.log(
+            `${ts()} ⚡ DETECTED ${paneId} awaiting input — score: ${detection.score.toFixed(2)}, ` +
+            `prompt: ${detection.signals.promptPattern.matched}, ` +
+            `quiet: ${detection.signals.quiescence.silenceMs}ms (${totalMs}ms)`,
+          )
+        } else if (shouldLog(level, 'debug')) {
+          console.log(
+            `${ts()} 🔍 quiescence ${paneId} — score: ${(detection?.score ?? 0).toFixed(2)} (${totalMs}ms)`,
+          )
+        }
+        return
       }
 
-      process.stdout.write(JSON.stringify(logEntry) + '\n')
+      if (event.type === 'pane-output') {
+        if (detection?.awaiting) {
+          console.log(
+            `${ts()} ⚡ DETECTED ${paneId} awaiting input — score: ${detection.score.toFixed(2)} (${totalMs}ms)`,
+          )
+        } else if (shouldLog(level, 'debug')) {
+          const text = 'raw' in event ? (event as { raw: string }).raw.slice(0, 60).replace(/[\x00-\x1f]/g, ' ') : ''
+          console.log(
+            `${ts()} 📤 output ${paneId} — ${text.trim() || '(empty)'} (${totalMs}ms)`,
+          )
+        }
+        return
+      }
+
+      if (event.type === 'pane-exited') {
+        console.log(`${ts()} 🚪 exited ${paneId} (${totalMs}ms)`)
+        return
+      }
+
+      if (event.type === 'session-created' || event.type === 'session-closed') {
+        if (shouldLog(level, 'debug')) {
+          const sid = 'sessionId' in event ? (event as { sessionId: string }).sessionId : ''
+          console.log(`${ts()} 📋 ${event.type} ${sid}`)
+        }
+        return
+      }
+
+      if (event.type === 'window-add' || event.type === 'window-close') {
+        if (shouldLog(level, 'debug')) {
+          const wid = 'windowId' in event ? (event as { windowId: string }).windowId : ''
+          console.log(`${ts()} 🪟 ${event.type} ${wid}`)
+        }
+        return
+      }
+
+      // Fallback for unknown event types
+      if (shouldLog(level, 'debug')) {
+        console.log(`${ts()} ❓ ${event.type} ${paneId ?? ''} (${totalMs}ms)`)
+      }
     } catch {
       // Must never crash the pipeline
     }
